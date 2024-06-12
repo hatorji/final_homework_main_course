@@ -11,8 +11,6 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-using System.Globalization;
-using System.Reflection;
 
 void PrintArray(string[] array)
 {
@@ -24,34 +22,35 @@ void PrintArray(string[] array)
         else
             Console.Write($"{array[i]}");
     }
-    Console.Write("] => ");
+    Console.Write("]");
 }
 
-string[] ThreeOrLessCharArray(string[] array)
+string[] PrintThreeOrLessCharArray(string[] array)
 {
-    string[] result = new string[array.Length]; //) new string[] {} | System.Array.Empty<string>()
-    
+    int l = 0; // l == Длинна итогового массива, чтобы избежать пустых ячеек.
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i].Length <= 3)
         {
-            result[i] = array[i];
+            l++;
         }
     }
-   
-    Console.Write("[");
-     for (int i = 0; i < result.Length; i++)
+    string[] result = new string[l];
+    int j = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        if (i < result.Length - 1)
-            Console.Write($"{result[i]}, ");
-        else
-            Console.Write($"{result[i]}");
+        if (array[i].Length <= 3)
+        {
+            result[j] = array[i];
+            j++;
+        }
     }
-    Console.Write("]");
-     return result;
+    return result;
 }
 
-string[] mainArray = {"1234", "1567", "-2", "computer science"};
+string[] mainArray = { "1234", "1567", "-2", "computer science" };
 
 PrintArray(mainArray);
-ThreeOrLessCharArray(mainArray);
+string[] result = PrintThreeOrLessCharArray(mainArray);
+Console.Write(" => ");
+PrintArray(result);
