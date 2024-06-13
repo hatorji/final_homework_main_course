@@ -25,7 +25,7 @@ void PrintArray(string[] array)
     Console.Write("]");
 }
 
-string[] PrintThreeOrLessCharArray(string[] array)
+string[] ThreeOrLessCharArray(string[] array)
 {
     int l = 0; // l == Длинна итогового массива, чтобы избежать пустых ячеек.
     for (int i = 0; i < array.Length; i++)
@@ -37,7 +37,7 @@ string[] PrintThreeOrLessCharArray(string[] array)
     }
     string[] result = new string[l];
     int j = 0;
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++) //да, цикл повторяется, но сначала пришлось высчитать и задать длинну масива, т.к. в С№ длинна массива не меняется динамически.
     {
         if (array[i].Length <= 3)
         {
@@ -51,6 +51,6 @@ string[] PrintThreeOrLessCharArray(string[] array)
 string[] mainArray = { "1234", "1567", "-2", "computer science" };
 
 PrintArray(mainArray);
-string[] result = PrintThreeOrLessCharArray(mainArray);
+string[] result = ThreeOrLessCharArray(mainArray);
 Console.Write(" => ");
 PrintArray(result);
